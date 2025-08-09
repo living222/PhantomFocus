@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Livingston – Photography Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.querySelector(".navbar");
+  const about = document.querySelector("#about");
+  const galleryEnd = document.querySelector("#gallery-end");
+
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+
+    // Blur control (optional; already working)
+    navbar.classList.remove("scrolled", "blurred", "max-blur");
+    if (scrollY > 50 && scrollY < 150) {
+      navbar.classList.add("scrolled");
+    } else if (scrollY >= 150 && scrollY < 300) {
+      navbar.classList.add("blurred");
+    } else if (scrollY >= 300) {
+      navbar.classList.add("max-blur");
+    }
+    const aboutBottom = about.getBoundingClientRect().bottom + window.scrollY;
+    const galleryBottom = galleryEnd.getBoundingClientRect().bottom + window.scrollY;
+
+    if (scrollY > aboutBottom - 100 && scrollY < galleryBottom - 100) {
+      navbar.classList.add("hidden");
+    } else {
+      navbar.classList.remove("hidden");
+    }
+  });
+});
+</script>
+  <!-- NAVBAR -->
+<nav class="navbar">
+  <a href="#home" class="logo">LIVINGSTON</a>
+
+  <div class="nav-center">
+    <ul class="nav-links">
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#gallery">GALLERY</a></li>
+      <li><a href="#quote">QUOTE</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </div>
+
+  <div class="live-clock" id="liveClock"></div>
+</nav>
+  
+  <!-- HERO SECTION -->
+  <section id="home" class="hero"></section>
+  
+  <!-- CONTENT WRAPPER -->
+  <div class="gradient-content">
+
+  <section id="about" class="about-me">
+  <h2>ABOUT ME!</h2>
+  <p>
+HI. I’M LIVINGSTON — <span id="age"></span>, A CHILL BILL, PHOTOGRAPHER, GUITAR NOODLER, AND A CERTIFIED EXPERT IN WASTING TIME DOING ABSOLUTELY NOTHING.
+
+FOR YEARS, I’VE MASTERED THE ANCIENT ART OF “I’LL DO IT TOMORROW”, UNTIL ONE DAY I REALIZED:
+TOMORROW WAS TODAY. AND TODAY HAD A DEADLINE.
+SO I DID SOMETHING TERRIFYING…
+I OPENED VS CODE AND STARTED BUILDING THIS WEBSITE.
+
+WHAT STARTED AS "LET ME SHOW OFF MY PHOTOGRAPHY" QUICKLY TURNED INTO "WHY IS THIS IMAGE FLOATING INTO SPACE AND THE BUTTON SCREAMING AT ME?"
+
+BUT HERE I AM — A LAZY DUDE TRYING TO UN-LAZY HIMSELF, TURNING SCATTERED PIXELS AND HALF-CHARGED DREAMS INTO A REAL PORTFOLIO.
+I’M NOT A DEVELOPER. I JUST GOOGLED REALLY HARD.
+
+THANKS FOR STOPPING BY — NOW SCROLL THROUGH MY WORK WHILE I PRETEND LIKE I DIDN’T ALMOST CRY OVER CSS MARGINS. 
+
+AND IF THIS SITE BREAKS... IT'S PROBABLY BECAUSE I LEARNED JUST ENOUGH TO BE DANGEROUS. MIC DROP.
+  </p>
+</section>
+<script>
+  // Set your birth year here
+  const birthYear = 2002; // Change if your birth year is different
+
+  function calculateAge(year) {
+    const today = new Date();
+    let age = today.getFullYear() - year;
+    // Optional: adjust if birthday hasn't happened yet this year
+    const birthMonth = 12; // August (0-based: Jan=0, Aug=7, but better to use 1-based)
+    const birthDay = 26;   // Day of birth
+    const currentMonth = today.getMonth() + 1; // JS month is zero-based
+    const currentDay = today.getDate();
+    if (currentMonth < birthMonth || (currentMonth === birthMonth && currentDay < birthDay)) {
+      age--;
+    }
+    return age;
+  }
+
+  document.getElementById('age').textContent = calculateAge(birthYear);
+</script>
+
+<script>
+  function updateClock() {
+    const now = new Date();
+    
+    const day = now.toLocaleDateString('en-IN', { weekday: 'long' });
+    const time = now.toLocaleTimeString('en-IN', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+
+    document.getElementById('liveClock').textContent = `${day}, ${time}`;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock(); // Run once immediately
+</script>
+    <!-- GALLERY CAROUSEL 1 – Centered -->
+    <section class="slider-section">
+      <div id="carousel-1" class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-stage">  
+            <div class="carousel-image" data-index="0"><img src="images/photo1.jpg" alt="Photo 1"></div>
+            <div class="carousel-image" data-index="1"><img src="images/photo2.jpg" alt="Photo 2"></div>
+            <div class="carousel-image" data-index="2"><img src="images/photo3.jpg" alt="Photo 3"></div>
+            <div class="carousel-image" data-index="3"><img src="images/photo4.jpg" alt="Photo 4"></div>
+            <div class="carousel-image" data-index="4"><img src="images/photo5.jpg" alt="Photo 5"></div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="nav-btn" id="prevBtn-1">‹</button>
+          <button class="nav-btn" id="nextBtn-1">›</button>
+        </div>
+        <div class="carousel-indicators"></div> 
+      </div>
+    </section>
+
+    <!-- GALLERY CAROUSEL 2 – Right Bias -->
+    <section class="slider-section">
+      <div id="carousel-2" class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-stage">
+            <div class="carousel-image" data-index="0"><img src="images/photo6.jpg" alt="Photo 6"></div>
+            <div class="carousel-image" data-index="1"><img src="images/photo7.jpg" alt="Photo 7"></div>
+            <div class="carousel-image" data-index="2"><img src="images/photo8.jpg" alt="Photo 8"></div>
+            <div class="carousel-image" data-index="3"><img src="images/photo9.jpg" alt="Photo 9"></div>
+            <div class="carousel-image" data-index="4"><img src="images/photo10.jpg" alt="Photo 10"></div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="nav-btn" id="prevBtn-2">‹</button>
+          <button class="nav-btn" id="nextBtn-2">›</button>
+        </div>
+        <div class="carousel-indicators"></div>
+      </div>
+    </section>
+
+    <!-- GALLERY CAROUSEL 3 – Left Bias -->
+  <section id="gallery-end" class="slider-section">
+      <div id="carousel-3" class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-stage">
+            <div class="carousel-image" data-index="0"><img src="images/photo11.jpg" alt="Photo 11"></div>
+            <div class="carousel-image" data-index="1"><img src="images/photo12.jpg" alt="Photo 12"></div>
+            <div class="carousel-image" data-index="2"><img src="images/photo13.jpg" alt="Photo 13"></div>
+            <div class="carousel-image" data-index="3"><img src="images/photo14.jpg" alt="Photo 14"></div>
+            <div class="carousel-image" data-index="4"><img src="images/photo15.jpg" alt="Photo 15"></div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="nav-btn" id="prevBtn-3">‹</button>
+          <button class="nav-btn" id="nextBtn-3">›</button>
+        </div>
+        <div class="carousel-indicators"></div>
+      </div>
+    </section>
+
+<!-- Quote below carousel -->
+<section id="quote" class="carousel-quote">
+  <blockquote>
+  "PEOPLE OFTEN TAKE CAMERAS FOR GRANTED, BUT THEIR INVENTION IS NOTHING SHORT OF EXTRAORDINARY. 
+  THE FACT THAT HUMANS WERE ABLE TO EXTRACT MINERALS FROM THE EARTH, REFINE THEM INTO PRECISE GLASS LENSES, 
+  AND DEVELOP TECHNOLOGY CAPABLE OF FREEZING A SINGLE MOMENT IN TIME IS MIND-BLOWING. EVERY PHOTO IS NOT JUST AN IMAGE IT’S A PORTAL TO THE PAST,
+   A TANGIBLE MEMORY PRESERVED THROUGH SCIENCE AND INNOVATION"
+</blockquote>
+</section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+  <h2>Contact</h2>
+
+  <div class="contact-columns">
+    <!-- Left Column -->
+    <div class="contact-col">
+      <p>
+        <strong>Instagram:</strong>
+        <a href="https://www.instagram.com/?hl=en" target="_blank" rel="noopener noreferrer">
+          @_LIVINSTXN_
+        </a>
+      </p>
+      <p>
+  <strong>Phone:</strong>
+  <a href="tel:+919181431212632">+91 81431 212632</a>
+</p>
+    </div>
+    <!-- Right Column -->
+    <div class="contact-col">
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:livingstond1226@gmail.com">livingstond1226@gmail.com</a>
+      </p>
+      <p>
+        <strong>VSCO:</strong>
+        <a href="https://vs.co/q0l3wifg" target="_blank" rel="noopener noreferrer">
+          @livingstonnnn
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+  <script src="carousel.js"></script>
+  <script>
+    // live clock script unchanged
+  </script>
+  <footer class="site-footer">
+  <p>© 2025 Livingston Photography. All rights reserved.</p>
+</footer>
+</body>
+</html>

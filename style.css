@@ -1,0 +1,611 @@
+/* ===== Carousel sizing variables only ===== */
+:root {
+  --carousel-img-w-desktop: 600px;
+  --carousel-img-h-desktop: calc(var(--carousel-img-w-desktop) * 9 / 16);
+
+  --carousel-img-w-tablet: 400px;
+  --carousel-img-h-tablet: calc(var(--carousel-img-w-tablet) * 9 / 16);
+
+  --carousel-img-w-mobile: 280px;
+  --carousel-img-h-mobile: calc(var(--carousel-img-w-mobile) * 9 / 16);
+
+  --carousel-img-w-small: 220px;
+  --carousel-img-h-small: calc(var(--carousel-img-w-small) * 9 / 16);
+
+  --carousel-img-w: var(--carousel-img-w-desktop);
+  --carousel-img-h: var(--carousel-img-h-desktop);
+}
+/* ===== Global Body Styles ===== */
+/* ===== Global Body Styles ===== */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'BenizExtraBold', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  color: #fff;
+}
+
+/* Prevent extra bottom spacing on last child */
+body > *:last-child {
+  margin-bottom: 0;
+}
+/* ===== Animated Gradient BELOW HERO ===== */
+.gradient-content {
+  flex: 1; /* fill remaining space below hero */
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(135deg, #023E8A, #5d7b3c,#F85E00 , #089ede, #2f1e26, #1196a7,#A41623);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+
+/* Animated gradient keyframes */
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Global reset, layout, fonts, gradient background ===== */
+html {
+  box-sizing: border-box;
+  font-size: 14px;                /* hardcoded instead of variable */
+  font-family: 'BenizExtraBold', sans-serif;
+  line-height: 1.5;
+  color: #fff;
+  background-color: transparent;  /* allow body gradient through */
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Remove any background override from .gradient-content */
+.gradient-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* no background here so body gradient shows */
+}
+
+/* ===== Rest of your CSS follows below ===== */
+/* (carousel, navbar, typography, etc.) */
+/* 1. Import Helvetica Neue 93 Black */
+@font-face {
+  font-family: 'BenizExtraBold';
+  src: url('Fonts/beniz-extra-bold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* 2. Import Segoe Script */
+@font-face {
+  font-family: 'SegoeScript';
+  src: url('Fonts/segoe-script.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+h1, h2, h3, h4, h5, h6,
+p, a, li, span {
+  color: #fff !important;
+}
+.navbar .logo,
+.contact h2,
+.contact p {
+  margin: 5px 0;
+  font-family: 'BenizExtraBold', sans-serif;
+  font-weight: 900;
+
+  font-style: normal;
+  color: #fff !important;
+}  
+.about-me p {
+  font-family: 'BenizExtraBold', sans-serif;
+  font-size: 5rem;
+  line-height: 2;
+}
+@keyframes gradientWave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.logo {
+  font-family: 'BenizExtraBold', sans-serif;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  z-index: 1000;
+  transition: all var(--duration-normal) var(--ease-standard);
+  opacity: 1;
+  transform: translateY(0);
+  font-size: 105%;
+}
+
+/* Ensures .nav-links are centered between logo and clock */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* centers the links horizontally */
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  font-family: 'HelveticaNeue93', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-weight: 1100 !important;
+  font-style: normal !important;
+  padding-bottom: 4px;
+  color: #fff !important;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease;
+  font-size: 1.2rem !important; /* keep same as logo */
+}
+
+.nav-links li a:hover {
+  border-bottom-color: #fff; /* underline on hover */
+}
+
+/* Clock stays right */
+.live-clock {
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-white);
+  font-family: var(--font-family-base);
+  font-size: 1.2rem;
+}
+/* === NAVBAR BLUR STATES === */
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px); /* Safari support */
+  box-shadow: none;
+  opacity: 1;
+}
+
+.navbar.blurred {
+  background-color: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  opacity: 0.95;
+}
+.navbar.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+  transition: all 0.4s ease-in-out;
+}
+.navbar.max-blur {
+  background-color: rgba(0, 0, 0, 0.35); 
+  backdrop-filter: blur(80px);         
+  -webkit-backdrop-filter: blur(35px);  
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3); 
+  opacity: 0.95;
+}
+/* ==== HERO SECTION - FULL HEIGHT ==== */
+.hero {
+  width: 100%;
+  height: 130vh;
+  background-image: url("images/hero2.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--color-white);
+  position: relative;
+}
+
+/* HIDE all text content in hero section */
+.hero > div {
+  display: none;
+}
+
+/* ABOUT ME SECTION FIX */
+.about-me {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px 80px 20px; /* increased bottom padding from 40px to 80px */
+  background: none;
+}
+
+/* ABOUT ME heading */
+.about-me h2 {
+  font-family: 'BenizExtraBold', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 3rem;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 40px; /* more space before paragraph */
+}
+
+/* ABOUT ME paragraph */
+.about-me p {
+  font-size: 1.4rem; /* Normal body size */
+  line-height: 1.5; /* Comfortable spacing */
+  max-width: 900px; /* Keep it from stretching too wide */
+  margin: 0 auto; /* Center it */
+  color: var(--color-white);
+}
+/* ==== 3D CAROUSEL GALLERY SECTION ==== */
+.slider-section {
+  width: 100%;
+  min-height: 100vh;
+  height: 130vh; /* optional if you want more space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px(--space-32) 0;
+  overflow: hidden;
+  position: relative;
+  background: none;
+  box-sizing: border-box;
+}
+
+/* Carousel section title */
+.slider-title {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-2xl);
+  color: var(--color-white);
+  letter-spacing: 0.3px;
+  margin-bottom: var(--space-32);
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: var(--font-weight-normal);
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  top: var(--space-10);
+  user-select: none;
+}
+/* ===== CAROUSEL IMAGE SIZING VARIABLES ===== *
+
+/* ===== MAIN CAROUSEL IMAGE RULE ===== */
+.carousel-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--carousel-img-w);
+  height: var(--carousel-img-h);
+  margin-left: calc(var(--carousel-img-w) / -2); /* perfectly center horizontally */
+  margin-top: calc(var(--carousel-img-h) / -2);  /* perfectly center vertically */
+  cursor: pointer;
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.23,1,0.32,1), opacity 0.7s;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+  transform-origin: center;
+  z-index: 0;
+}
+
+.carousel-image img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 100%;  /* scale image inside container */
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: translate(-50%, -50%);
+  transition: box-shadow 0.7s ease;
+}
+
+/* ===== POSITION CLASSES WITH PROPORTIONAL TRANSFORMS ===== */
+.carousel-image.position-center {
+  transform: translateX(0) translateZ(0) rotateY(0deg) scale(1.05);
+  opacity: 1;
+  z-index: 5;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-image.position-left {
+  transform: translateX(-200px)
+             translateZ(-100px)
+             rotateY(15deg) scale(0.94);
+  opacity: 1;
+  z-index: 4;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+}
+
+.carousel-image.position-right {
+  transform: translateX(-200px)
+             translateZ(-100px)
+             rotateY(-15deg) scale(0.94);
+  opacity: 1;
+  z-index: 4;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+}
+
+.carousel-image.position-far-left {
+  transform: translateX(-390px)
+             translateZ(-200px)
+             rotateY(25deg) scale(0.83);
+  opacity: 1;
+  z-index: 3;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.carousel-image.position-far-right {
+  transform: translateX(390px)
+             translateZ(-200px)
+             rotateY(-25deg) scale(0.83);
+  opacity: 1;
+  z-index: 3;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.carousel-quote {
+  text-align: center;
+  font-style: normal;
+  font-size: 1.45rem;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 120px; /* add this line for space below quote */
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+}
+.slider-section {
+  width: 100%;
+  min-height: 520px;
+  padding: 80px 0 40px; /* increased top padding from 0px to 80px for more space above carousel */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.carousel-container {
+  width: 100vw; 
+  max-width: 100vw; 
+  height: 70vh;
+  margin: 0;
+  padding: 0 20px; 
+  box-sizing: border-box;
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1.4);
+}
+.carousel-wrapper, .carousel-stage {
+  width:140%; height:140%;
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.carousel-stage { transform-style:preserve-3d; }
+
+.carousel-image img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+.carousel-image img {
+  width: var(--carousel-img-w);
+  height: var(--carousel-img-h);
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* Default Positions (Carousel 1 - Centered) */
+.carousel-image.position-center {
+  transform:translateX(0) translateZ(0) rotateY(0) scale(1.05);
+  opacity:1; z-index:5;
+  box-shadow:0 10px 22px rbpa(0,0,0,0.5);
+}
+.carousel-image.position-left {
+  transform:translateX(-120px) translateZ(-90px) rotateY(10deg) scale(0.95);
+  opacity:1; z-index:4;
+}
+.carousel-image.position-right {
+  transform:translateX(120px) translateZ(-90px) rotateY(-10deg) scale(0.95);
+  opacity:1; z-index:4;
+}
+.carousel-image.position-far-left {
+  transform:translateX(-240px) translateZ(-200px) rotateY(18deg) scale(0.87);
+  opacity:1; z-index:3;
+}
+.carousel-image.position-far-right {
+  transform:translateX(240px) translateZ(-200px) rotateY(-18deg) scale(0.85);
+  opacity:1; z-index:3;
+}
+
+/* Carousel 2 Positions (Right-biased - main image positioned right) */
+.carousel-image.position-center-2 {
+  transform:translateX(150px) translateZ(0) rotateY(-8deg) scale(1.05);
+  opacity:1; z-index:5;
+  box-shadow:0 24px 42px rgba(0,0,0,.35);
+}
+.carousel-image.position-left-2 {
+  transform:translateX(-80px) translateZ(-160px) rotateY(18deg) scale(.92);
+  opacity:1; z-index:4;
+}
+.carousel-image.position-right-2 {
+  transform:translateX(320px) translateZ(-160px) rotateY(-20deg) scale(.92);
+  opacity:1; z-index:4;
+}
+.carousel-image.position-far-left-2 {
+  transform:translateX(-280px) translateZ(-350px) rotateY(30deg) scale(.82);
+  opacity:1; z-index:3;
+}
+.carousel-image.position-far-right-2 {
+  transform:translateX(480px) translateZ(-350px) rotateY(-30deg) scale(.82);
+  opacity:1; z-index:3;
+}
+
+/* Carousel 3 Positions (Left-biased - main image positioned left) */
+.carousel-image.position-center-3 {
+  transform:translateX(-150px) translateZ(0) rotateY(8deg) scale(1.05);
+  opacity:1; z-index:5;
+  box-shadow:0 24px 42px rgba(0,0,0,.35);
+}
+.carousel-image.position-left-3 {
+  transform:translateX(-200px) translateZ(-160px) rotateY(20deg) scale(.92);
+  opacity:1; z-index:4;
+}
+.carousel-image.position-right-3 {
+  transform:translateX(80px) translateZ(-160px) rotateY(-18deg) scale(.92);
+  opacity:1; z-index:4;
+}
+.carousel-image.position-far-left-3 {
+  transform:translateX(-480px) translateZ(-350px) rotateY(30deg) scale(.82);
+  opacity:1; z-index:3;
+}
+.carousel-image.position-far-right-3 {
+  transform:translateX(280px) translateZ(-350px) rotateY(-30deg) scale(.82);
+  opacity:1; z-index:3;
+}
+
+/* Controls */
+.carousel-controls {
+  position:absolute; top:50%; left:0; right:0;
+  display:flex; justify-content:space-between;
+  transform:translateY(-50%); pointer-events:none; z-index:9;
+}
+.carousel-controls .nav-btn {
+  pointer-events:auto;
+  background:rgba(80,80,80,.19); border:none; color:#fff;
+  font-size:2.2rem; width:48px; height:48px;
+  border-radius:10px; cursor:pointer;
+  box-shadow:0 10px 22px rgba(0,0,0,0.25);
+  transition:background .2s;
+}
+.carousel-controls .nav-btn:hover {
+  background:rgba(80,90,100,.39);
+}
+
+/* Indicators */
+.carousel-indicators {
+  position:absolute; bottom:0px; left:50%;
+  transform:translateX(-50%); display:flex; gap:12px; z-index:11;
+}
+.carousel-indicators .indicator {
+  width:12px; height:12px; border-radius:50%;
+  background:rgba(255,255,255,.36); cursor:pointer;
+  transition:all .28s;
+}
+.carousel-indicators .indicator.active {
+  background:#fff; box-shadow:0 0 7px 1px rgba(255,255,255,.7);
+}
+.contact {
+  text-align: center;
+  margin: 40px auto 20px auto; /* pushes contact to bottom of page */
+  padding: 40px 20px 20px 20px; /* optional: space above contact */
+  max-width: 600px;
+  color: #fff;
+  font-family: 'BenizExtraBold', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+.contact h2 {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-4xl);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--space-32);
+  text-transform: uppercase;
+  margin: 5px 0;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-white);
+}
+/* Contact columns wrapper */
+.contact-columns {
+  display: flex;
+  justify-content: center;  /* center the two columns as a group */
+  gap: 40px;                 /* space between columns */
+  flex-wrap: wrap;           /* stack on smaller screens */
+  margin-top: 20px;
+}
+
+.contact-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 200px;
+  text-align: center;        /* center the text inside each column */
+}
+/* Links in contact columns */
+.contact-col a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-col a:hover {
+  text-decoration: underline;
+}
+
+.logo,
+.contact,
+.contact h2
+.contact p {font-family: 'BenizExtraBold', sans-serif;
+}
+.site-footer {
+  text-align: center;
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.9); /* dark background */
+  color: #fff;
+  font-family: 'BenizExtraBold', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+.site-footer p {
+  margin: 0;
+}
