@@ -1,0 +1,22 @@
+# OS / system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Node / build
+node_modules/
+dist/
+build/
+
+# Logs and env
+*.log
+.env
+
+# Common large design/source files you may not want in repo
+*.psd
+*.ai
+
